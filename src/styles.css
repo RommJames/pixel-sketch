@@ -26,7 +26,26 @@
     display: flex;
     justify-content: center;    
     align-items: center;
+    flex-direction: column;
 }
+
+/* Brush Controls */
+#btn-brush-rainbow{
+    background: linear-gradient(to right, 
+        #ff9f9f, /* Pastel red */
+        #ffcc9f, /* Pastel orange */
+        #ffff9f, /* Pastel yellow */
+        #9fff9f, /* Pastel green */
+        #9f9fff, /* Pastel blue */
+        #c9a0ff, /* Pastel indigo */
+        #ff9fcd  /* Pastel violet */
+    );
+    color: #333; /* Dark gray for contrast */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7); /* Soft white shadow */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+}   
 
 /* Sketch Pad Area */
 

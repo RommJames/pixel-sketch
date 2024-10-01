@@ -12,7 +12,19 @@
     <div id="pixel-sketch-container">
         <div id="setting-panel">
             <div id="size-control">
-                <input type="number" id="size-value" placeholder="Pixel Size">
+                <div id="size-control-container">
+                    <label for="size-value" id="size-label">                    
+                    </label>
+                    <input type="range" id="size-value" placeholder="Pixel Size" value="16" min="1" max="100">
+                </div>                
+                <div id="brush-control-container">
+                    <label for="color-label">Brush Color</label>
+                    <input type="color" id="brush-color-value">
+                    <button id="btn-brush-rainbow">
+                        Rainbow Brush 
+                        <!-- Not Yet Working -->
+                    </button>
+                </div>
             </div>
         </div>
         <div id="sketch-pad">  

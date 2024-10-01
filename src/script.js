@@ -1,13 +1,19 @@
 // Get DOM
 const sketchPadHTML = document.querySelector("#sketch-pad");
+const sizeValue = document.querySelector("#size-value");
+const sizeLabelHTML = document.querySelector("#size-label");
+const brushColorValueHTML = document.querySelector("#brush-color-value");
+const btnBrushRainbowHTML = document.querySelector("#btn-brush-rainbow");
 
 // primitive data
 let pixelSizeValue = 16
 let paintAction = "mouseover" // click or mouseover
+let brushColorValue = "black"
 
 // Pixel Sketch Pad Creation
 updateSketchPadArea(pixelSizeValue)
 function updateSketchPadArea(pixelSize){
+    sizeLabelHTML.textContent = `${pixelSize} x ${pixelSize}`
     sketchPadHTML.innerHTML = ""
     for(let row = 1; row <= pixelSize; row++){
         const makePixelPadRowHTML = document.createElement("div");
@@ -20,7 +26,7 @@ function updateSketchPadArea(pixelSize){
             makePixelPadRowHTML.appendChild(makePixelPadHTML);
             
             makePixelPadHTML.addEventListener(paintAction,(e)=>{
-                brushColor(makePixelPadHTML)
+                brushColor(makePixelPadHTML, brushColorValue)
             })
     
         }
@@ -29,16 +35,29 @@ function updateSketchPadArea(pixelSize){
 }
 
 // Brush Color
-function brushColor(pixelPad){
-    pixelPad.style.background = "black"
+function brushColor(pixelPad, brushColor){
+    pixelPad.style.background = brushColor
 }
 
 
-// testing debug area
-const sizeValue = document.querySelector("#size-value");
-sizeValue.addEventListener("keyup", (e)=>{
+// Dynamic Pixel Pad in Sketch Pad
+sizeValue.addEventListener("change", (e)=>{
     let value = e.target.value
     
     updateSketchPadArea(value)
-    // alert(e.target.value)
+
 })
+
+// Dynamic Brush Color
+brushColorValueHTML.addEventListener("change", (e)=>{
+    let value = e.target.value;
+    
+    brushColorValue = value
+})
+
+
+// testing debug area
+btnBrushRainbowHTML.addEventListener("click", (e)=>{
+    let value = e.target.value  
+})
+
