@@ -4,6 +4,8 @@ const sizeValue = document.querySelector("#size-value");
 const sizeLabelHTML = document.querySelector("#size-label");
 const brushColorValueHTML = document.querySelector("#brush-color-value");
 const btnBrushRainbowHTML = document.querySelector("#btn-brush-rainbow");
+const eraserBtnHTML = document.querySelector("#eraser-btn");
+const clearBtnHTML = document.querySelector("#clear-btn");
 
 // primitive data
 let pixelSizeValue = 16
@@ -41,10 +43,10 @@ function brushColor(pixelPad, brushColor){
 
 
 // Dynamic Pixel Pad in Sketch Pad
-sizeValue.addEventListener("change", (e)=>{
-    let value = e.target.value
-    
-    updateSketchPadArea(value)
+sizeValue.addEventListener("change", (e)=>{    
+    pixelSizeValue = e.target.value
+
+    updateSketchPadArea(pixelSizeValue)
 
 })
 
@@ -55,9 +57,23 @@ brushColorValueHTML.addEventListener("change", (e)=>{
     brushColorValue = value
 })
 
+// Eraser Tool
+eraserBtnHTML.addEventListener("click", (e)=>{
+   
+    brushColorValue = "white"
+
+})
+
+clearBtnHTML.addEventListener("click", (e)=>{
+
+    updateSketchPadArea(pixelSizeValue)
+
+})
+
 
 // testing debug area
 btnBrushRainbowHTML.addEventListener("click", (e)=>{
     let value = e.target.value  
+    
 })
 
