@@ -6,6 +6,7 @@ const brushColorValueHTML = document.querySelector("#brush-color-value");
 const btnBrushRainbowHTML = document.querySelector("#btn-brush-rainbow");
 const eraserBtnHTML = document.querySelector("#eraser-btn");
 const clearBtnHTML = document.querySelector("#clear-btn");
+const allBtn = document.querySelectorAll("#btn");
 
 // primitive data
 let pixelSizeValue = 16
@@ -81,6 +82,8 @@ function dynamicSlider(){
     progress = (tempSliderValue / sizeValue.max) * 100;
     sizeValue.style.background = `linear-gradient(to right, #c87fdd ${progress}%, white ${progress}%)`;
 }
+
+// Button Activation
 
 // testing debug area
 btnBrushRainbowHTML.addEventListener("click", (e)=>{
