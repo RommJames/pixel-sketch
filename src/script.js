@@ -70,10 +70,20 @@ clearBtnHTML.addEventListener("click", (e)=>{
 
 })
 
+// Slider Effect
+let tempSliderValue
+let progress
+dynamicSlider()
+sizeValue.addEventListener("input", dynamicSlider)
+
+function dynamicSlider(){
+    tempSliderValue = sizeValue.value
+    progress = (tempSliderValue / sizeValue.max) * 100;
+    sizeValue.style.background = `linear-gradient(to right, #c87fdd ${progress}%, white ${progress}%)`;
+}
 
 // testing debug area
 btnBrushRainbowHTML.addEventListener("click", (e)=>{
     let value = e.target.value  
-    
 })
 

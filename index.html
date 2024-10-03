@@ -8,28 +8,31 @@
     <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
-    <h1>Pixel Sketch: Art at Your Fingertips</h1>
+    <header>
+        <h1>Pixel Sketch: Art at Your Fingertips</h1>
+    </header>
     <div id="pixel-sketch-container">
         <div id="setting-panel">
             <div id="size-control">
                 <div id="size-control-container">
+                    <h4>Sketch Area Size</h4>
                     <label for="size-value" id="size-label">                    
                     </label>
                     <input type="range" id="size-value" placeholder="Pixel Size" value="16" min="1" max="100">
                 </div>                
-                <div id="brush-control-container">
-                    <label for="brush-color-value">Brush Color</label>
+                <div id="brush-control-container">                    
                     <input type="color" id="brush-color-value">
-                    <button id="btn-brush-rainbow">
+                    <label for="brush-color-value" class="btn" id="brush-color-label">Brush Color</label>                    
+                    <button class="btn" id="btn-brush-rainbow">
                         Rainbow Brush 
                         <!-- Not Yet Working -->
                     </button>
                 </div>
                 <div id="remove-color-control-container">
-                    <button id="eraser-btn">
+                    <button class="btn" id="eraser-btn" >
                         Eraser
                     </button>
-                    <button id="clear-btn">
+                    <button class="btn" id="clear-btn">
                         Clear
                     </button>
                 </div>
