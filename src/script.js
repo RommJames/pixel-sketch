@@ -29,6 +29,7 @@ let brushColorValue = "black"
 let randomize = false
 let rainbowColors = ["#ff9f9f", "#ffcc9f", "#ffff9f", "#9fff9f", "#9f9fff", "#c9a0ff", "#ff9fcd"]
 let color
+let showHideTrigger = true
 
 // Pixel Sketch Pad Creation
 updateSketchPadArea(pixelSizeValue)
@@ -106,31 +107,17 @@ brushColorValueHTML.addEventListener("change", (e)=>{
 // Eraser Tool
 eraserBtnHTML.addEventListener("click", (e)=>{
 
-    brushColorValue = "white"        
-
-   eraserBtnHTML.classList.add("active-btn");
-   btnBrushColorLabel.classList.remove("active-btn");
-   btnBrushRainbowHTML.classList.remove("active-rainbow-btn");
-   randomize = false
+    eraserMode();
 })
 
 // Brush Color
 btnBrushColorLabel.addEventListener("click", (e)=>{
-
-    brushColorValue = brushColorValueHTML.value
-
-   eraserBtnHTML.classList.remove("active-btn");
-   btnBrushColorLabel.classList.add("active-btn");
-   btnBrushRainbowHTML.classList.remove("active-rainbow-btn");
-    randomize = false
+    activateBrushColor()
 })
 
 // Rainbow Brush Button
 btnBrushRainbowHTML.addEventListener("click", (e)=>{
-    eraserBtnHTML.classList.remove("active-btn");
-    btnBrushColorLabel.classList.remove("active-btn");
-    btnBrushRainbowHTML.classList.add("active-rainbow-btn");
-    randomize = true
+    rainbowMode();
 })
 
 // Clear Button
@@ -159,18 +146,10 @@ drawFunctionalityHTML.addEventListener("click", (e)=>{
 
     switch(target.id){
         case 'hover-mode-btn':
-            recentPaintAction = paintAction
-            paintAction = "mouseover";
-            hoverModeBtnHTML.classList.add("active-btn");
-            clickModeBtnHTML.classList.remove("active-btn");
-
+            hoverMode()
             break;
         case 'click-mode-btn':
-            recentPaintAction = paintAction
-            paintAction = "click";
-            hoverModeBtnHTML.classList.remove("active-btn");
-            clickModeBtnHTML.classList.add("active-btn");            
-            
+            clickMode()                     
             break;
         
     }
@@ -208,27 +187,18 @@ function downloadAsPNG() {
 
 // Keyboard Overview Exit
 exitShortcutHTML.addEventListener("click", ()=>{
-    keyboardShortcutContainerHTML.style.transform = "scaleY(0)";
-    document.body.style.overflow = "visible";
+    exitShortcutView()
 
 })
 
 // Hide Button for Setting Panel
 btnHideSettingHTML.addEventListener("click", ()=>{
-    settingPanelHTML.style.display = "none"
-    showSettingBtnHTML.style.transform = "scale(1)"
-    headerHTML.style.transform = "scale(0)"
-    setTimeout(() => {
-        showSettingBtnHTML.style.opacity = "0.1"
-    }, 800);
+    hideSetting()
 })
 
 // Show Button for Setting
 showSettingBtnHTML.addEventListener("click", ()=>{
-    settingPanelHTML.style.display = "inline-block"
-    showSettingBtnHTML.style.transform = "scale(0)"
-    showSettingBtnHTML.style.opacity = "1"    
-    headerHTML.style.transform = "scale(1)"
+    showSetting()
 })
 
 showSettingBtnHTML.addEventListener("mouseover", ()=>{
@@ -244,18 +214,101 @@ showSettingBtnHTML.addEventListener("mouseout", ()=>{
 // Keyboard Shortcut Event Listener
 window.addEventListener("keyup", (e)=>{
     let key = e.key
-
+    
     switch(key){
         case "1":
-            alert(key)
-            break
+            hoverMode();
+            break;
+        case "2":
+            clickMode();
+            break;
+        case "3":
+            activateBrushColor();
+            break;
+        case "4":
+            brushColorValueHTML.click();
+            break;
+        case "q":
+            eraserMode()
+            break;
+        case "w":
+            updateSketchPadArea(pixelSizeValue);  
+            break;
+        case "e":
+            rainbowMode()
+            break;
+        case "a":
+            showHideTrigger ? hideSetting() : showSetting();
+            break;
+        case "s":
+            downloadAsPNG()
+            break;
+        case "Escape":
+            exitShortcutView()
+            break;
     }
 })
 
 // ----- Functions --------//
 function hoverMode(){
-    
+    recentPaintAction = paintAction
+    paintAction = "mouseover";
+    hoverModeBtnHTML.classList.add("active-btn");
+    clickModeBtnHTML.classList.remove("active-btn");
 }
 
-// testing debug area
+function clickMode(){
+    recentPaintAction = paintAction
+    paintAction = "click";
+    hoverModeBtnHTML.classList.remove("active-btn");
+    clickModeBtnHTML.classList.add("active-btn");   
+}
 
+function activateBrushColor(){
+
+    brushColorValue = brushColorValueHTML.value
+
+   eraserBtnHTML.classList.remove("active-btn");
+   btnBrushColorLabel.classList.add("active-btn");
+   btnBrushRainbowHTML.classList.remove("active-rainbow-btn");
+    randomize = false
+}
+
+function eraserMode(){
+    brushColorValue = "white"        
+
+   eraserBtnHTML.classList.add("active-btn");
+   btnBrushColorLabel.classList.remove("active-btn");
+   btnBrushRainbowHTML.classList.remove("active-rainbow-btn");
+   randomize = false
+}
+
+function rainbowMode(){
+    eraserBtnHTML.classList.remove("active-btn");
+    btnBrushColorLabel.classList.remove("active-btn");
+    btnBrushRainbowHTML.classList.add("active-rainbow-btn");
+    randomize = true
+}
+
+function showSetting(){
+    settingPanelHTML.style.display = "inline-block"
+    showSettingBtnHTML.style.transform = "scale(0)"
+    showSettingBtnHTML.style.opacity = "1"    
+    headerHTML.style.transform = "scale(1)"
+    showHideTrigger = true;
+}
+
+function hideSetting(){
+    settingPanelHTML.style.display = "none"
+    showSettingBtnHTML.style.transform = "scale(1)"
+    headerHTML.style.transform = "scale(0)"
+    setTimeout(() => {
+        showSettingBtnHTML.style.opacity = "0.1"
+    }, 800);
+    showHideTrigger = false;
+}
+
+function exitShortcutView(){
+    keyboardShortcutContainerHTML.style.transform = "scaleY(0)";
+    document.body.style.overflow = "visible";
+}
