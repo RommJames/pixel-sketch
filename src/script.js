@@ -17,9 +17,10 @@ const keyboardShortcutContainerHTML = document.querySelector("#keyboard-shortcut
 const otherInformationHTML = document.querySelector("#other-information");
 const btnHideSettingHTML = document.querySelector("#setting-panel-hide-btn");
 const settingPanelHTML = document.querySelector("#setting-panel");
-const pixelSketchContainerHTML = document.querySelector("#pixel-sketch-container")
-const showSettingBtnHTML = document.querySelector("#show-setting-btn")
-const headerHTML = document.querySelector("header")
+const pixelSketchContainerHTML = document.querySelector("#pixel-sketch-container");
+const showSettingBtnHTML = document.querySelector("#show-setting-btn");
+const headerHTML = document.querySelector("header");
+const brushControlContainerHTML = document.querySelector("#brush-control-container");
 
 // primitive data
 let pixelSizeValue = 16
@@ -97,6 +98,7 @@ sizeValue.addEventListener("change", (e)=>{
 
 })
 
+
 // Dynamic Brush Color
 brushColorValueHTML.addEventListener("change", (e)=>{
     let value = e.target.value;
@@ -104,28 +106,24 @@ brushColorValueHTML.addEventListener("change", (e)=>{
     brushColorValue = value
 })
 
-// Eraser Tool
-eraserBtnHTML.addEventListener("click", (e)=>{
+// Brush modes event delegation
+brushControlContainerHTML.addEventListener("click", (e)=>{
+    let target = e.target
 
-    eraserMode();
-})
-
-// Brush Color
-btnBrushColorLabel.addEventListener("click", (e)=>{
-    activateBrushColor()
-})
-
-// Rainbow Brush Button
-btnBrushRainbowHTML.addEventListener("click", (e)=>{
-    rainbowMode();
-})
-
-// Clear Button
-
-clearBtnHTML.addEventListener("click", (e)=>{
-
-    updateSketchPadArea(pixelSizeValue)    
-
+    switch(target.id){
+        case "brush-color-label":
+            activateBrushColor();
+            break;
+        case "btn-brush-rainbow":
+            rainbowMode();
+            break;
+        case "eraser-btn":
+            eraserMode();
+            break;
+        case "clear-btn":
+            updateSketchPadArea(pixelSizeValue);
+            break;
+    }
 })
 
 // Slider Effect
