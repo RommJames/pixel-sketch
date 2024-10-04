@@ -30,6 +30,7 @@ header{
     padding: 15px;
     display: flex;   
     justify-content: center; 
+    align-items: center;
     gap: 50px;
     flex-wrap: wrap;        
 }
@@ -62,7 +63,7 @@ header{
 }
 
 /* Drawing Functionality Control */
-#draw-functionality{
+#draw-functionality, #other-information{
     flex-direction: column;
 }
 
@@ -207,11 +208,18 @@ header{
      1px  1px 0px rgba(0, 0, 0, 0.3);
 }
 
-.active-btn{
+.active-btn, .key-design{
     background-color: var(--primary-color);
     color: white;
     background-color: var(--primary-color);
     border: 2px solid white;
+}
+
+.key-design{
+    display: inline-block;        
+    text-align: center;
+    width: 50px;
+    margin: 5px;
 }
 
 /* Sketch Pad Area */
@@ -233,4 +241,44 @@ header{
 .pixel-pad{    
     border: 1px dashed rgba(0, 0, 0, 0.1);
     flex: 1;
+}
+
+/* keyboard Shortcut Container */
+#keyboard-shortcut-container{    
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transform-origin: top;
+}
+
+#shortcut-overview{
+    background-color: var(--secondary-color);
+    border: 2px solid white;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.btn-exit{
+    position: relative;
+    left: 20px;
+    bottom: 10px;
+    text-align: right;
+    height: 25px;
+}
+
+.title{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#setting-panel-hide-btn{
+    margin: 0px auto;
+    width: 100%;
+    border: none;
 }

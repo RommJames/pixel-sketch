@@ -11,6 +11,10 @@ const btnBrushColorLabel = document.querySelector("#brush-color-label");
 const hoverModeBtnHTML = document.querySelector("#hover-mode-btn");
 const clickModeBtnHTML = document.querySelector("#click-mode-btn");
 const drawFunctionalityHTML = document.querySelector("#draw-functionality");
+const downloadHTML = document.querySelector("#download");
+const exitShortcutHTML = document.querySelector("#exit");
+const keyboardShortcutContainerHTML = document.querySelector("#keyboard-shortcut-container");
+const otherInformationHTML = document.querySelector("#other-information");
 
 // primitive data
 let pixelSizeValue = 16
@@ -171,7 +175,37 @@ drawFunctionalityHTML.addEventListener("click", (e)=>{
         
 })
 
+// Keyboard Shortcut and download output
+otherInformationHTML.addEventListener("click", (e)=>{
+    let target = e.target
 
+    switch(target.id){
+        case "view-shortcuts-btn":
+            keyboardShortcutContainerHTML.style.transform = "scaleY(1)"
+            break;
+        case "download":
+            // Download the output of the paint
+            downloadAsPNG()
+            break;
+
+    }
+})
+
+// Download As PNG function
+function downloadAsPNG() {    
+                
+    html2canvas(sketchPadHTML).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'myPixelSketch.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
+
+// Keyboard Overview Exit
+exitShortcutHTML.addEventListener("click", ()=>{
+    keyboardShortcutContainerHTML.style.transform = "scaleY(0)";
+})
 
 
 // testing debug area

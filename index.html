@@ -8,12 +8,17 @@
     <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
+
     <header>
         <h1>Pixel Sketch: Art at Your Fingertips</h1>
         <i>By Romm James Cuya</i>
     </header>
     <div id="pixel-sketch-container">
         <div id="setting-panel">
+            <div>
+                <button class="btn" id="setting-panel-hide-btn">Hide Setting Panel</button>
+                <!-- Not yet working -->
+            </div>
             <div id="size-control">
                 <div id="size-control-container">
                     <h4>Sketch Area Size</h4>
@@ -46,11 +51,77 @@
                         </button>
                     </div>
                 </div>    
+                <div id="other-information">
+                    <button class="btn" id="view-shortcuts-btn">
+                        Keyboard shortcut
+                    </button>
+                    <button class="btn" id="download">
+                        Download Your Pixel Sketch
+                    </button>
+                </div>
             </div>
         </div>
         <div id="sketch-pad">  
         </div>
+        <div id="keyboard-shortcut-container"> 
+            <div id="shortcut-overview">
+                <div class="btn-exit">
+                    <button class="btn" id="exit"> x </button>
+                </div>
+                <div class="title">
+                    <h1>Keyboard Shortcut</h1>
+                </div>
+                <div id="key-design-container">
+                    <h2>
+                        <span class="key-design">1</span>
+                        => 
+                        Hover Mode
+                    </h2>
+                    <h2>
+                        <span class="key-design">2</span>
+                        => 
+                        Click Mode
+                    </h2>
+                    <h2>
+                        <span class="key-design">3</span>
+                        => 
+                        Brush Color
+                    </h2>
+                    <h2>
+                        <span class="key-design">4</span>
+                        => 
+                        Choose Color
+                    </h2>
+                    <h2>
+                        <span class="key-design">Q</span>
+                        => 
+                        Eraser Mode
+                    </h2>
+                    <h2>
+                        <span class="key-design">W</span>
+                        => 
+                        Clear Sketch Area
+                    </h2>
+                    <h2>
+                        <span class="key-design">E</span>
+                        => 
+                        Rainbow Brush
+                    </h2>
+                    <h2>
+                        <span class="key-design">A</span>
+                        => 
+                        Keyboard Shortcut
+                    </h2>
+                    <h2>
+                        <span class="key-design">S</span>
+                        => 
+                        Download
+                    </h2>
+                </div>
+            </div>       
+        </div>
     </div>    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="src/script.js"></script>
 </body>
 </html>
