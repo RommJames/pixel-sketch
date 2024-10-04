@@ -15,6 +15,11 @@ const downloadHTML = document.querySelector("#download");
 const exitShortcutHTML = document.querySelector("#exit");
 const keyboardShortcutContainerHTML = document.querySelector("#keyboard-shortcut-container");
 const otherInformationHTML = document.querySelector("#other-information");
+const btnHideSettingHTML = document.querySelector("#setting-panel-hide-btn");
+const settingPanelHTML = document.querySelector("#setting-panel");
+const pixelSketchContainerHTML = document.querySelector("#pixel-sketch-container")
+const showSettingBtnHTML = document.querySelector("#show-setting-btn")
+const headerHTML = document.querySelector("header")
 
 // primitive data
 let pixelSizeValue = 16
@@ -23,7 +28,6 @@ let paintAction = "mouseover" // click or mouseover
 let brushColorValue = "black"
 let randomize = false
 let rainbowColors = ["#ff9f9f", "#ffcc9f", "#ffff9f", "#9fff9f", "#9f9fff", "#c9a0ff", "#ff9fcd"]
-let pixelPadStorage = [];
 let color
 
 // Pixel Sketch Pad Creation
@@ -40,8 +44,7 @@ function updateSketchPadArea(pixelSize){
             const makePixelPadHTML = document.createElement("div");       
             makePixelPadHTML.setAttribute("class", "pixel-pad");
             makePixelPadRowHTML.appendChild(makePixelPadHTML);
-            
-            pixelPadStorage.push(makePixelPadHTML)  
+                        
         
             makePixelPadHTML.addEventListener("click",(e)=>{                   
 
@@ -150,7 +153,7 @@ function dynamicSlider(){
     sizeValue.style.background = `linear-gradient(to right, #c87fdd ${progress}%, white ${progress}%)`;
 }
 
-// Draw Functinality using Event Delegation
+// Draw Functionality using Event Delegation
 drawFunctionalityHTML.addEventListener("click", (e)=>{
     let target = e.target
 
@@ -182,6 +185,7 @@ otherInformationHTML.addEventListener("click", (e)=>{
     switch(target.id){
         case "view-shortcuts-btn":
             keyboardShortcutContainerHTML.style.transform = "scaleY(1)"
+            document.body.style.overflow = "hidden"
             break;
         case "download":
             // Download the output of the paint
@@ -205,8 +209,53 @@ function downloadAsPNG() {
 // Keyboard Overview Exit
 exitShortcutHTML.addEventListener("click", ()=>{
     keyboardShortcutContainerHTML.style.transform = "scaleY(0)";
+    document.body.style.overflow = "visible";
+
 })
 
+// Hide Button for Setting Panel
+btnHideSettingHTML.addEventListener("click", ()=>{
+    settingPanelHTML.style.display = "none"
+    showSettingBtnHTML.style.transform = "scale(1)"
+    headerHTML.style.transform = "scale(0)"
+    setTimeout(() => {
+        showSettingBtnHTML.style.opacity = "0.1"
+    }, 800);
+})
+
+// Show Button for Setting
+showSettingBtnHTML.addEventListener("click", ()=>{
+    settingPanelHTML.style.display = "inline-block"
+    showSettingBtnHTML.style.transform = "scale(0)"
+    showSettingBtnHTML.style.opacity = "1"    
+    headerHTML.style.transform = "scale(1)"
+})
+
+showSettingBtnHTML.addEventListener("mouseover", ()=>{
+    showSettingBtnHTML.style.opacity = "1"    
+})
+
+showSettingBtnHTML.addEventListener("mouseout", ()=>{
+    setTimeout(() => {
+        showSettingBtnHTML.style.opacity = "0.1"
+    }, 500);    
+})
+
+// Keyboard Shortcut Event Listener
+window.addEventListener("keyup", (e)=>{
+    let key = e.key
+
+    switch(key){
+        case "1":
+            alert(key)
+            break
+    }
+})
+
+// ----- Functions --------//
+function hoverMode(){
+    
+}
 
 // testing debug area
 

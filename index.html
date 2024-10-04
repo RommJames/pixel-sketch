@@ -8,18 +8,13 @@
     <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
-
     <header>
         <h1>Pixel Sketch: Art at Your Fingertips</h1>
-        <i>By Romm James Cuya</i>
+        <i>By Romm James</i>
     </header>
-    <div id="pixel-sketch-container">
-        <div id="setting-panel">
-            <div>
-                <button class="btn" id="setting-panel-hide-btn">Hide Setting Panel</button>
-                <!-- Not yet working -->
-            </div>
-            <div id="size-control">
+    <div id="pixel-sketch-container">         
+        <div id="setting-panel">              
+            <div id="size-control">                
                 <div id="size-control-container">
                     <h4>Sketch Area Size</h4>
                     <label for="size-value" id="size-label">                    
@@ -59,10 +54,16 @@
                         Download Your Pixel Sketch
                     </button>
                 </div>
+                <div id="btn-hide-container">
+                    <button class="btn" id="setting-panel-hide-btn">Hide Setting Panel</button>                
+                </div>
             </div>
-        </div>
+        </div>        
         <div id="sketch-pad">  
         </div>
+        <button class="btn" id="show-setting-btn">
+            Setting
+        </button> 
         <div id="keyboard-shortcut-container"> 
             <div id="shortcut-overview">
                 <div class="btn-exit">
@@ -110,7 +111,7 @@
                     <h2>
                         <span class="key-design">A</span>
                         => 
-                        Keyboard Shortcut
+                        Hide / Show Setting Panel
                     </h2>
                     <h2>
                         <span class="key-design">S</span>
