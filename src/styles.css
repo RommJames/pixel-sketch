@@ -61,6 +61,15 @@ header{
     background-color: rgba(200, 127, 221, 0.2);
 }
 
+/* Drawing Functionality Control */
+#draw-functionality{
+    flex-direction: column;
+}
+
+#draw-controls{
+    display: flex;
+}
+
 
 /* Brush Controls */
 .active-rainbow-btn{

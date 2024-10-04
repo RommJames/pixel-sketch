@@ -10,6 +10,7 @@
 <body>
     <header>
         <h1>Pixel Sketch: Art at Your Fingertips</h1>
+        <i>By Romm James Cuya</i>
     </header>
     <div id="pixel-sketch-container">
         <div id="setting-panel">
@@ -19,7 +20,7 @@
                     <label for="size-value" id="size-label">                    
                     </label>
                     <input type="range" id="size-value" placeholder="Pixel Size" value="16" min="1" max="100">
-                </div>                
+                </div>                            
                 <div id="brush-control-container">                    
                     <input type="color" id="brush-color-value">
                     <label class="btn-toggle active-btn" id="brush-color-label">Brush Color</label>                    
@@ -27,8 +28,6 @@
                         Rainbow Brush 
                         <!-- Not Yet Working -->
                     </button>
-                </div>
-                <div id="remove-color-control-container">
                     <button class="btn-toggle" id="eraser-btn" >
                         Eraser
                     </button>
@@ -36,6 +35,17 @@
                         Clear
                     </button>
                 </div>
+                <div id="draw-functionality">
+                    <h4>Sketch Mode</h4>
+                    <div id="draw-controls">
+                        <button class="btn active-btn" id="hover-mode-btn">
+                            Hover
+                        </button>
+                        <button class="btn" id="click-mode-btn">
+                            Click
+                        </button>
+                    </div>
+                </div>    
             </div>
         </div>
         <div id="sketch-pad">  

@@ -8,13 +8,19 @@ const eraserBtnHTML = document.querySelector("#eraser-btn");
 const clearBtnHTML = document.querySelector("#clear-btn");
 const allBtnToggle = document.querySelectorAll(".btn-toggle");
 const btnBrushColorLabel = document.querySelector("#brush-color-label");
+const hoverModeBtnHTML = document.querySelector("#hover-mode-btn");
+const clickModeBtnHTML = document.querySelector("#click-mode-btn");
+const drawFunctionalityHTML = document.querySelector("#draw-functionality");
 
 // primitive data
 let pixelSizeValue = 16
+let recentPaintAction = ""
 let paintAction = "mouseover" // click or mouseover
 let brushColorValue = "black"
 let randomize = false
 let rainbowColors = ["#ff9f9f", "#ffcc9f", "#ffff9f", "#9fff9f", "#9f9fff", "#c9a0ff", "#ff9fcd"]
+let pixelPadStorage = [];
+let color
 
 // Pixel Sketch Pad Creation
 updateSketchPadArea(pixelSizeValue)
@@ -31,23 +37,42 @@ function updateSketchPadArea(pixelSize){
             makePixelPadHTML.setAttribute("class", "pixel-pad");
             makePixelPadRowHTML.appendChild(makePixelPadHTML);
             
-            makePixelPadHTML.addEventListener(paintAction,(e)=>{
-                let color
+            pixelPadStorage.push(makePixelPadHTML)  
+        
+            makePixelPadHTML.addEventListener("click",(e)=>{                   
 
-                if(randomize){
-                    let randomIndexRainbow = Math.ceil(Math.random() * rainbowColors.length - 1);
-                    let getRainbowColor = rainbowColors[randomIndexRainbow];
-                    color = getRainbowColor
-                }else{
-                    color = brushColorValue
+                if(paintAction === "click"){
+                    pixelPadPaint(makePixelPadHTML, color)
                 }
-                                
-                brushColor(makePixelPadHTML, color);
+                
+                
             })
-    
+
+            makePixelPadHTML.addEventListener("mouseover", (e)=>{
+
+                if(paintAction === "mouseover"){
+                    pixelPadPaint(makePixelPadHTML, color)
+                }
+
+            })
         }
     
     }
+}
+
+// Draw Function
+
+function pixelPadPaint(pad, color){
+
+        if(randomize){
+            let randomIndexRainbow = Math.ceil(Math.random() * rainbowColors.length - 1);
+            let getRainbowColor = rainbowColors[randomIndexRainbow];
+            color = getRainbowColor
+        }else{
+            color = brushColorValue
+        }
+
+        brushColor(pad, color);
 }
 
 // Brush Color
@@ -120,6 +145,33 @@ function dynamicSlider(){
     progress = (tempSliderValue / sizeValue.max) * 100;
     sizeValue.style.background = `linear-gradient(to right, #c87fdd ${progress}%, white ${progress}%)`;
 }
+
+// Draw Functinality using Event Delegation
+drawFunctionalityHTML.addEventListener("click", (e)=>{
+    let target = e.target
+
+    switch(target.id){
+        case 'hover-mode-btn':
+            recentPaintAction = paintAction
+            paintAction = "mouseover";
+            hoverModeBtnHTML.classList.add("active-btn");
+            clickModeBtnHTML.classList.remove("active-btn");
+
+            break;
+        case 'click-mode-btn':
+            recentPaintAction = paintAction
+            paintAction = "click";
+            hoverModeBtnHTML.classList.remove("active-btn");
+            clickModeBtnHTML.classList.add("active-btn");            
+            
+            break;
+        
+    }
+
+        
+})
+
+
 
 
 // testing debug area
