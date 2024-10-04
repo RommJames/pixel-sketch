@@ -253,8 +253,8 @@ header i{
 
 #sketch-pad{
     border: 2px solid black;
-    width: 500px;
-    height: 500px;
+    width: 530px;
+    height: 530px;
     display: flex;        
     flex-direction: column;
     
@@ -304,3 +304,19 @@ header i{
     margin-bottom: 10px;
 }
 
+/* Responsive Web */
+
+@media (max-width: 768px) { 
+    #sketch-pad{
+        width: 100%;
+    }   
+    #view-shortcuts-btn, #draw-controls, #draw-functionality > h4{
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    #sketch-pad{
+        height: 350px;
+    }
+}
