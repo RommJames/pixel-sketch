@@ -4,6 +4,8 @@
 
 🔗 **[Try it live!](https://rommjames.github.io/pixel-sketch/)**
 
+<img width="969" height="614" alt="pixel-sketch-thumbnail" src="https://github.com/user-attachments/assets/87c1c1a0-d3b1-4aa9-aaf8-76229c5cf450" />
+
 ---
 
 ## 🛠️ Technologies Used
